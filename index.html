@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BobEsopnja</title>
+</head>
+<body background="images/fondoamarillo.png">
+    <div id="stage">
+    </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/three@0.85.0/examples/js/controls/OrbitControls.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                var scene;
+                var camera;
+                var renderer;
+                var sleeve1;
+                var sleeve2;
+                var shirt;
+                var pant;
+                var pantsleeve1;
+                var pantsleeve2;
+                var eye1;
+                var eye2;
+                var pupil1;
+                var pupil2;
+                var mouth;
+                var internalpupil1;
+                var internalpupil2;
+                var teeth1;
+                var teeth2;
+                var arm1;
+                var arm2;
+                var leg1;
+                var leg2;
+                var sock1;
+                var sock2;
+                var shoe1;
+                var shoe2;
+                var shoe3;
+                var shoe4;
+                var hand1;
+                var hand2;
+                var finger1;
+                var finger2;
+                var finger3;
+                var finger4;
+                var body;
+                init();
+
+                function init(){
+                    renderer = new THREE.WebGLRenderer({alpha:true});
+                    renderer.setSize( window.innerWidth, window.innerHeight );
+                    $("#stage").append(renderer.domElement);
+                    scene = new THREE.Scene();
+                    createCamera();
+                    createSleeves();
+                    createBody();
+                    createShirt();
+                    createPant();
+                    createPantSleeves();
+                    createEyes();
+                    createPupils();
+                    createInternalPupils();
+                    createMouth();
+                    createTeeth();
+                    createExtremities();
+                    createSocks();
+                    createShoes();
+                    createHands();
+                    render();
+                }
+                
+                function createBody(){
+                    var cubegeometry = new THREE.BoxGeometry(8.5,8,3);
+                    var cubematerial = new THREE.MeshBasicMaterial({color: 0xffff00});
+                    
+                    body = new THREE.Mesh( cubegeometry , cubematerial );
+                    scene.add(body);
+                    body.position.y=-0.8;
+         
+                }
+
+                function createSleeves(){
+                    var cilindergeometry = new THREE.CylinderGeometry(0,1,2,200,200,true);
+                    var cylindermaterial = new THREE.MeshBasicMaterial({color: 0xffffff});
+                    
+                    sleeve1 = new THREE.Mesh( cilindergeometry , cylindermaterial );
+                    scene.add(sleeve1);
+                    sleeve1.position.y=-1.8; 
+                    sleeve1.position.x=-4.5; 
+                    sleeve1.rotation.z=30;
+                    
+                    sleeve2 = new THREE.Mesh( cilindergeometry , cylindermaterial );
+                    scene.add(sleeve2);
+                    sleeve2.position.y=-1.8; 
+                    sleeve2.position.x=4.5; 
+                    sleeve2.rotation.z=1;
+                                    
+                }
+
+                function createShirt(){
+                    var cubegeometry = new THREE.BoxGeometry(8.5,1,3);
+                    var cubematerial = new THREE.MeshBasicMaterial({color: 0xffffff});
+
+                    shirt = new THREE.Mesh( cubegeometry , cubematerial );
+                    scene.add(shirt);
+                    shirt.position.y=-5.3;
+                }
+               
+                function createPant(){
+                    var cubegeometry = new THREE.BoxGeometry(8.5,1,3);
+                    var cubematerial = new THREE.MeshBasicMaterial({color: 0x804407});
+
+                    pant = new THREE.Mesh( cubegeometry , cubematerial );
+                    scene.add(pant);
+                    pant.position.y=-6.3;
+                }
+
+                function createPantSleeves(){
+                    var cilindergeometry = new THREE.CylinderGeometry(0.5,1,1,200,200,true);
+                    var cylindermaterial = new THREE.MeshBasicMaterial({color: 0x804407});
+                    
+                    pantsleeve1 = new THREE.Mesh( cilindergeometry , cylindermaterial );
+                    scene.add(pantsleeve1);
+                    pantsleeve1.position.y=-7.3; 
+                    pantsleeve1.position.x=-2.3; 
+                    
+                    pantsleeve2 = new THREE.Mesh( cilindergeometry , cylindermaterial );
+                    scene.add(pantsleeve2);
+                    pantsleeve2.position.y=-7.3; 
+                    pantsleeve2.position.x=2.3; 
+                }
+
+                function createEyes(){
+                    var eyesgeometry = new THREE.SphereGeometry( 1.7 , 32, 32 );
+                    var eyesmaterial = new THREE.MeshBasicMaterial( {color: 0xffffff } );
+
+                    eye1= new THREE.Mesh( eyesgeometry , eyesmaterial );
+                    scene.add(eye1);
+                    eye1.position.y=0.5;
+                    eye1.position.x=-1.45;
+                    eye1.position.z=0.8;
+                
+                    eye2= new THREE.Mesh( eyesgeometry , eyesmaterial );
+                    scene.add(eye2);
+                    eye2.position.y=0.5;
+                    eye2.position.x=1.45;
+                    eye2.position.z=0.8;
+                }
+
+                function createPupils(){
+                    var pupilgeometry = new THREE.CircleGeometry( 0.6, 32 );
+                    var pupilmaterial = new THREE.MeshBasicMaterial( { color: 0x00ffff } );
+                    
+                    pupil1 = new THREE.Mesh( pupilgeometry, pupilmaterial );
+                    scene.add( pupil1 );
+                    pupil1.position.y=0.5;
+                    pupil1.position.x=-1;
+                    pupil1.position.z=2.5;
+
+                    pupil2 = new THREE.Mesh( pupilgeometry, pupilmaterial );
+                    scene.add( pupil2 );
+                    pupil2.position.y=0.5;
+                    pupil2.position.x=1.7;
+                    pupil2.position.z=2.5;
+                    
+                }
+
+                function createInternalPupils(){
+                    var internalpupilgeometry = new THREE.CircleGeometry( 0.2, 32 );
+                    var internalpupilmaterial = new THREE.MeshBasicMaterial( { color: 0x000000 } );
+                    
+                    internalpupil1 = new THREE.Mesh( internalpupilgeometry, internalpupilmaterial );
+                    scene.add( internalpupil1 );
+                    internalpupil1.position.y=0.5;
+                    internalpupil1.position.x=-1;
+                    internalpupil1.position.z=2.53;
+
+                    internalpupil2 = new THREE.Mesh( internalpupilgeometry, internalpupilmaterial );
+                    scene.add( internalpupil2 );
+                    internalpupil2.position.y=0.5;
+                    internalpupil2.position.x=1.7;
+                    internalpupil2.position.z=2.53;  
+                }
+
+                function createMouth(){
+                    var mouthgeometry = new THREE.CircleGeometry( 1.7 , 32 );
+                    var mouthmaterial = new THREE.MeshBasicMaterial( { color: 0x990000 } );
+                    
+                    mouth = new THREE.Mesh( mouthgeometry, mouthmaterial );
+                    scene.add( mouth );
+                    mouth.position.y=-2.9;
+                    mouth.position.x=-1;
+                    mouth.position.z=1.6;
+                }
+
+                function createTeeth(){
+                    var teethgeometry = new THREE.PlaneGeometry( 0.7 , 0.9 );
+                    var teethmaterial = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+                    
+                    teeth1 = new THREE.Mesh( teethgeometry, teethmaterial );
+                    scene.add( teeth1 );
+                    teeth1.position.y=-1.68;
+                    teeth1.position.x=-1.5;
+                    teeth1.position.z=1.63;
+
+                    teeth2 = new THREE.Mesh( teethgeometry, teethmaterial );
+                    scene.add( teeth2 );
+                    teeth2.position.y=-1.68;
+                    teeth2.position.x=-0.5;
+                    teeth2.position.z=1.63;
+                }
+
+                function createExtremities(){
+                    var extremitiesgeometry = new THREE.CylinderGeometry(0.2,0.2,3.5,200,200,false);
+                    var extremitiesmaterial = new THREE.MeshBasicMaterial({color: 0xffff00});
+
+                    leg1 = new THREE.Mesh( extremitiesgeometry , extremitiesmaterial );
+                    scene.add( leg1 );
+                    leg1.position.y=-7.5;
+                    leg1.position.x=-2.3;
+
+                    leg2 = new THREE.Mesh( extremitiesgeometry , extremitiesmaterial );
+                    scene.add( leg2 );
+                    leg2.position.y=-7.5;
+                    leg2.position.x=2.3;  
+
+                    var extremities1geometry = new THREE.CylinderGeometry(0.2,0.2,4,200,200,false);
+                    var extremities1material = new THREE.MeshBasicMaterial({color: 0xffff00});
+
+                    arm1 = new THREE.Mesh( extremities1geometry , extremities1material );
+                    scene.add( arm1 );
+                    arm1.position.y=-2.;
+                    arm1.position.x=-5.9;
+                    arm1.rotation.z=30;
+
+                    arm2 = new THREE.Mesh( extremities1geometry , extremities1material );
+                    scene.add( arm2 );
+                    arm2.position.y=-2.5;
+                    arm2.position.x=5.7; 
+                    arm2.rotation.z=1;               
+                }
+
+                function createSocks(){
+                    var socksgeometry = new THREE.CylinderGeometry(0.2,0.2,1.5,200,200,false);
+                    var socksmaterial = new THREE.MeshBasicMaterial({color: 0xffffff});
+
+                    sock1 = new THREE.Mesh( socksgeometry , socksmaterial );
+                    scene.add( sock1 );
+                    sock1.position.y=-10;
+                    sock1.position.x=-2.3;
+
+                    sock2 = new THREE.Mesh( socksgeometry , socksmaterial );
+                    scene.add( sock2 );
+                    sock2.position.y=-10;
+                    sock2.position.x=2.3;                  
+                }
+
+                function createShoes(){
+                    var shoesgeometry = new THREE.BoxGeometry(0.9,0.4,1.2);
+                    var shoesmaterial = new THREE.MeshBasicMaterial({color: 0x000000});
+                    
+                    shoe1 = new THREE.Mesh( shoesgeometry , shoesmaterial );
+                    scene.add(shoe1);
+                    shoe1.position.y=-10.9;
+                    shoe1.position.x=-2.3; 
+                    shoe1.position.z=0.3;
+
+                    shoe2 = new THREE.Mesh( shoesgeometry , shoesmaterial );
+                    scene.add(shoe2);
+                    shoe2.position.y=-10.9;
+                    shoe2.position.x=2.3; 
+                    shoe2.position.z=0.3;
+
+                    var spheregeometry = new THREE.SphereGeometry( 0.4 , 32, 32 );
+                    var spherematerial = new THREE.MeshBasicMaterial( {color: 0x000000 } );
+                    
+                    shoe3 = new THREE.Mesh( spheregeometry , spherematerial );
+                    scene.add(shoe3);
+                    shoe3.position.y=-10.7;
+                    shoe3.position.x=-2.3; 
+                    shoe3.position.z=0.8;
+
+                    shoe4 = new THREE.Mesh( spheregeometry , spherematerial );
+                    scene.add(shoe4);
+                    shoe4.position.y=-10.7;
+                    shoe4.position.x=2.3; 
+                    shoe4.position.z=0.8;
+         
+                }
+
+                function createHands(){
+                    var spheregeometry = new THREE.SphereGeometry( 0.5 , 32, 32 );
+                    var spherematerial = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+
+                    hand1 = new THREE.Mesh( spheregeometry , spherematerial );
+                    scene.add(hand1);
+                    hand1.position.y=-2.3;
+                    hand1.position.x=-7.9; 
+                    
+                    hand2 = new THREE.Mesh( spheregeometry , spherematerial );
+                    scene.add(hand2);
+                    hand2.position.y=-3.7;
+                    hand2.position.x=7.7;
+
+                    var extremitiesgeometry = new THREE.CylinderGeometry(0.18,0.18,0.5,200,200,false);
+                    var extremitiesmaterial = new THREE.MeshBasicMaterial({color: 0xffff00});
+
+                    finger1 = new THREE.Mesh( extremitiesgeometry , extremitiesmaterial );
+                    scene.add( finger1 );
+                    finger1.position.y=-2.3;
+                    finger1.position.x=-8.6;
+                    finger1.rotation.z=30;
+
+                    finger2 = new THREE.Mesh( extremitiesgeometry , extremitiesmaterial );
+                    scene.add( finger2 );
+                    finger2.position.y=-3.8;
+                    finger2.position.x=8.3; 
+                    finger2.rotation.z=1;
+
+                    finger3 = new THREE.Mesh( extremitiesgeometry , extremitiesmaterial );
+                    scene.add( finger3 );
+                    finger3.position.y=-4.3;
+                    finger3.position.x=7.9; 
+                    finger3.rotation.z=0.5;
+
+                    finger4 = new THREE.Mesh( extremitiesgeometry , extremitiesmaterial );
+                    scene.add( finger4 );
+                    finger4.position.y=-3.25;
+                    finger4.position.x=8.1; 
+                    finger4.rotation.z=90; 
+                }
+
+
+
+                function createCamera(){
+                    camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight , 0.5 , 1000);
+                    camera.position.z = 15;
+                    camera.position.y = 0;
+                    camera.position.x = 0;
+                    control = new THREE.OrbitControls(camera);
+                }
+
+                function render(){
+                    requestAnimationFrame( render );
+                    control.update();
+                    renderer.render( scene , camera );
+                }
+                
+            });
+            
+        </script>  
+</body>
+</html>
