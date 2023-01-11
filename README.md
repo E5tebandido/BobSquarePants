@@ -1,5 +1,7 @@
 # BobSquarePants
 
+[![ohyes](https://cdn3.emoji.gg/emojis/9302-ohyes.png)](https://emoji.gg/emoji/9302-ohyes)
+
 See this SpongeBob made by me, and watch it in all 3D angles
 https://teban18.github.io/BobSquarePants/
 
